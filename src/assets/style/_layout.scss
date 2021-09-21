@@ -1,0 +1,260 @@
+html,
+body,
+#app,
+.layout {
+  height: 100%;
+}
+body {
+  --body-background-color: #f2f2f2;
+  background-color: var(--body-background-color);
+  font-size: 87.5%;
+}
+a,
+.c-p {
+  cursor: pointer;
+}
+
+:root {
+  --base-height: 3rem; // 顶部基础高度
+  --base-width: 13rem; // 侧边基础宽度
+  --main-width: 96rem; //84rem;
+  --mini-width: 4rem;
+  --base-white: #fff;
+
+  --el-text-color-primary: #000;
+  --el-text-color-primary: #000;
+}
+
+.layout {
+  --header-height: var(--base-height);
+  --logo-width: var(--base-width);
+  --sidebar-top: var(--base-height);
+  --content-padding-left: var(--base-width);
+  --content-padding-top: var(--base-height);
+  --main-content-width: var(--main-width);
+  --main-top-height: var(--base-height);
+  --main-top-margin-left: var(--content-padding-left);
+  .header {
+    --header-text-color: #c0c4cc;
+    --header-background-color: #262f3e;
+    --ltnav-background-color: #374151;
+    --rtnav-icon-color: var(--base-white);
+    --logo-color: #fff;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    width: 100%;
+    height: var(--header-height);
+    color: var(--header-text-color);
+    background-color: var(--header-background-color);
+    .icon {
+      font-size: 1rem;
+    }
+    .toggle-icon {
+      font-size: 1.35rem;
+    }
+    .logo {
+      color: var(--logo-color);
+      width: var(--logo-width);
+      line-height: var(--base-height);
+      transition: width 0.3s;
+      font-size: 20px;
+      letter-spacing: 1px;
+      .text-regular {
+        font-size: 24px;
+      }
+    }
+    .topbar .lt {
+      .nav {
+        height: var(--base-height);
+        line-height: var(--base-height);
+        padding: 0 1rem;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.28s;
+        &.active {
+          color: var(--base-white);
+          background-color: var(--ltnav-background-color);
+        }
+        &:hover {
+          color: var(--base-white);
+          background-color: var(--ltnav-background-color);
+        }
+      }
+    }
+
+    @keyframes warn {
+      0% {
+        transform: scale(0.5);
+        opacity: 1;
+      }
+
+      30% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+    .topbar .rt {
+      .nav {
+        line-height: 1;
+        padding: 5px;
+        cursor: pointer;
+        user-select: none;
+        .el-dropdown {
+          color: inherit;
+        }
+        .el-badge__content {
+          right: 2px;
+          top: -2px;
+          display: none;
+        }
+        .notice {
+          .el-badge__content {
+            right: -6px;
+            top: -6px;
+            display: block;
+            animation: warn 1.5s ease-out 0s infinite;
+          }
+          .el-icon-bell:before {
+            content: "";
+          }
+        }
+        .icon {
+          color: var(--rtnav-icon-color);
+        }
+      }
+    }
+  }
+
+  .sidebar {
+    --sidebar-text-color: #c0c4cc;
+    --sidebar-background-color: #1e222d;
+    --sidebar-width: var(--base-width);
+    --side__menu-top-color: var(--base-white);
+    --menu-active-color: var(--base-white);
+    --menu-hover-color: #d1d5db;
+    --menu-hover-background: #374151;
+    --menu-active-background: #006eff;
+    --opened-menu-background: #151822;
+    .el-menu {
+      --el-menu-item-font-color: var(--sidebar-text-color);
+      --el-menu-item-hover-fill: var(--menu-hover-background);
+    }
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    margin: 0;
+    display: block;
+    overflow-y: auto;
+    transition: width 0.3s;
+    z-index: 100;
+    top: var(--sidebar-top);
+    width: var(--sidebar-width);
+    color: var(--sidebar-text-color);
+    background-color: var(--sidebar-background-color);
+
+    .side__menu-top {
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0 1rem;
+      height: 3rem;
+      line-height: 3rem;
+      color: var(--side__menu-top-color);
+    }
+    .side__menu-main {
+      .icon {
+        font-size: 1rem;
+      }
+    }
+    .el-menu.ow-menu {
+      border-right: 0;
+      margin-left: -10px;
+      background-color: var(--sidebar-background-color);
+      i {
+        color: inherit;
+      }
+      .el-menu-item-group__title {
+        display: none;
+      }
+      .el-menu-item,
+      .el-sub-menu__title {
+        height: 40px;
+        line-height: 40px;
+      }
+      .el-menu-item.is-active {
+        color: var(--menu-active-color);
+        background-color: var(--menu-active-background);
+      }
+      .is-opened,
+      .el-menu {
+        background-color: var(--opened-menu-background);
+      }
+      &.el-menu--collapse {
+        margin-left: 0px;
+        i {
+          font-size: 22px;
+        }
+        .el-menu-item,
+        .el-sub-menu__title {
+          height: 56px;
+          line-height: 56px;
+        }
+      }
+    }
+  }
+
+  .content {
+    --main-wrap-background: var(--base-white);
+
+    height: 100%;
+    transition: width 0.3s;
+    padding-left: var(--content-padding-left);
+    padding-top: var(--content-padding-top);
+    .main__top {
+      border-bottom: 1px solid #cfd5de;
+      background-color: #fff;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      // transition: all 0.3s;
+      z-index: 99;
+      padding: 0 1rem;
+      top: var(--main-top-height);
+      height: var(--main-top-height);
+      line-height: var(--main-top-height);
+      margin-left: var(--main-top-margin-left);
+    }
+    .main__wrap {
+      top: 3rem;
+      position: relative;
+      background-color: var(--body-background-color);
+    }
+    .main__content {
+      margin: 0 auto;
+      padding: 3rem 0;
+      position: relative;
+      width: var(--main-content-width);
+    }
+  }
+
+  &.mini-side {
+    --logo-width: var(--mini-width);
+    --content-padding-left: var(--mini-width);
+    .sidebar {
+      --sidebar-width: var(--mini-width);
+      .el-sub-menu .el-sub-menu__title {
+        padding-left: 20px !important;
+      }
+    }
+  }
+
+  // 主题模板
+  @import "theme";
+}
